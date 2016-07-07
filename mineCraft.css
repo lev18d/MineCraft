@@ -1,0 +1,42 @@
+#mainContain{
+    background-color:#8dbfff ;
+    width: 700px;
+    height: 700px;
+    display:inline-block;
+    margin: 0 12% 0 12%;
+}
+#toolsContain{
+    background-color: #000000;
+    height: 700px;
+    width: 250px;
+    display:inline-block;
+    float: right;
+}
+.box{
+    height:30px;
+    width:30px;
+    border: 1px black solid;
+    background-size: contain;
+    display: inline-block;
+}
+.sky{
+    background-color:#8dbfff ;
+}
+.cloud{
+    background-color: #ffffff;
+}
+.dirt{
+    background-image: url('images/dirt.png');
+}
+.rock{
+    background-image: url('images/rock.png');
+}
+.grass{
+    background-image: url('images/grass.png');
+}
+.leaf{
+    background-image: url('images/leaf.png');
+}
+.tree{
+    background-image: url('images/tree.png');
+}
