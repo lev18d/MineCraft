@@ -4,7 +4,7 @@
 
 var mineCraft = {};
 mineCraft.toolSelected = '';
-mineCraft.blockSelected = '';
+// mineCraft.blockSelected = '';
 mineCraft.selection = [mineCraft.toolSelected, mineCraft.blockSelected];
 mineCraft.match = false;
 
@@ -51,9 +51,12 @@ $(document).ready(function(){
    mineCraft.createBoard();
     mineCraft.buildToolSidebar();
 });
-mineCraft.checkMatch = function(){
-    if (mineCraft.selection[0] === mineCraft.selection[1]){
-        mineCraft.match = true;
+mineCraft.checkMatch = function(blockSelected){
+    if (blockSelected.attr('data') === $('.toolSelected').attr('data')){
+
+    }
+    else{
+        mineCraft.incompatibility();
     }
 };
 mineCraft.buildToolSidebar = function(){
@@ -81,26 +84,37 @@ mineCraft.createBoard = function(){
 };
 
 mineCraft.clickBlock = function () {
-        mineCraft.blockSelected = $(this);
+        var blockSelected = $(this);
         console.log('block');
-        mineCraft.checkMatch();
+        mineCraft.checkMatch(blockSelected);
     };
 mineCraft.clickTool = function (){
-        mineCraft.toolSelected = $(this);
-        mineCraft.toolSelected.toggleClass('toolSelected');
-        console.log('tool');
+        $('.toolItem').removeClass('toolSelected');
+        $(this).toggleClass('toolSelected');
 };
-// $('div').eq(7).attr('data');
 
-mineCraft.checkCompatibility = function(){
-    $(".toolItem").click(function () {
-        if(Benjifunction==true){
-            $(this).css("background-color","blue");
-        }
-        else{$(this).css("background-color","red");
+mineCraft.incompatibility = function(){
+    $('.toolSelected').addClass('incorrectSelection');
+    setTimeout(function(){
+        $('.toolSelected').removeClass('incorrectSelection');
+    },200);
+    
 
-        }
-    })
+
+
+
+
+
+
+
+
+    // $(".toolItem").click(function () {
+    //     if(Benjifunction==true){
+    //         $(this).css("background-color","blue");
+    //     }
+    //     else{$(this).css("background-color","red");
+    //     }
+    // })
 };
 
 //function to move the selected block to the empty space itemselected div in the sidebar

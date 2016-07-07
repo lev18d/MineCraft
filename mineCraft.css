@@ -30,6 +30,9 @@
 .toolSelected{
 background-color: blue;
 }
+.incorrectSelection{
+background-color: red;
+}
 #itemSelected{
     border-style: solid;
     border-color: lightgrey;
