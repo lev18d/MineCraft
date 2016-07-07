@@ -59,3 +59,4 @@ mineCraft.createBoard = function(){
       }
   }
 };
+

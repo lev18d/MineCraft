@@ -11,7 +11,29 @@
     width: 250px;
     display:inline-block;
     float: right;
+    position: relative;
+
 }
+
+.toolItem{
+    border-style: dashed;
+    border-color: lightgrey;
+    width:128px;height:128px;
+    margin: auto;
+    margin-top: 28px;
+    margin-bottom: 28px;
+}
+
+#itemSelected{
+    border-style: solid;
+    border-color: lightgrey;
+    width:80px;height:80px;
+    margin: auto;
+
+}
+
+
+
 .box{
     height:33px;
     width:33px;
@@ -42,3 +64,4 @@
 .tree{
     background-image: url('images/tree.png');
 }
+
