@@ -3,6 +3,10 @@
  */
 
 var mineCraft = {};
+mineCraft.toolSelected = '';
+mineCraft.blockSelected = '';
+mineCraft.selection = [mineCraft.toolSelected, mineCraft.blockSelected];
+mineCraft.match = false;
 
 mineCraft.blocks = {
     'sky': {class: 'sky', data: 'nothing'},
@@ -14,9 +18,9 @@ mineCraft.blocks = {
     'rock': {class: 'rock',data: 'pickaxe'}
  };
 mineCraft.tools = [
-    {tool: 'axe', src: 'images/axe.png'},
-    {tool: 'pickaxe', src: 'images/pickaxe.png'},
-    {tool: 'shovel', src: 'images/shovel.png'}
+    {data: 'axe', src: 'images/axe.png'},
+    {data: 'pickaxe', src: 'images/pickaxe.png'},
+    {data: 'shovel', src: 'images/shovel.png'}
 ];
 
 
@@ -46,17 +50,38 @@ mineCraft.matrix = [
 $(document).ready(function(){
    mineCraft.createBoard();
 });
-
+mineCraft.checkMatch = function(){
+    if (mineCraft.selection[0] === mineCraft.selection[1]){
+        mineCraft.match = true;
+    }
+}
+;
 mineCraft.createBoard = function(){
-    console.log('Im ehreererere');
     var mainContain = $('#mainContain');
   for (var i=0;i<mineCraft.matrix.length;i++){
       for(var j=0; j<mineCraft.matrix[i].length; j++){
           mainContain.append($('<div/>', {
               class: mineCraft.blocks[mineCraft.matrix[i][j]].class
-          }).addClass('box').attr('data',mineCraft.blocks[mineCraft.matrix[i][j]].data));
+          })
+              .addClass('box')
+              .attr('data',mineCraft.blocks[mineCraft.matrix[i][j]].data))
+              .on('click', function(){
+                  mineCraft.blockSelected = $(this);
+                  console.log('block');
+                  mineCraft.checkMatch();
+              });
       }
   }
 };
+
+mineCraft.clickTools = function (){
+    $('.toolItem').on('click',function() {
+        mineCraft.toolSelected = $(this);
+        console.log('tool');
+    })
+};
+
 //hey
 // $('div').eq(7).attr('data');
+
+
