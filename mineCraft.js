@@ -58,5 +58,5 @@ mineCraft.createBoard = function(){
       }
   }
 };
-
+//hey
 // $('div').eq(7).attr('data');
