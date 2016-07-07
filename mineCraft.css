@@ -27,7 +27,9 @@
     width:120px;
     height:120px;
 }
-
+.toolSelected{
+background-color: blue;
+}
 #itemSelected{
     border-style: solid;
     border-color: lightgrey;
@@ -35,8 +37,6 @@
     margin: auto;
 
 }
-
-
 
 .box{
     height:33px;

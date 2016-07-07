@@ -49,18 +49,20 @@ mineCraft.matrix = [
 
 $(document).ready(function(){
    mineCraft.createBoard();
+    mineCraft.buildToolSidebar();
 });
 mineCraft.checkMatch = function(){
     if (mineCraft.selection[0] === mineCraft.selection[1]){
         mineCraft.match = true;
     }
 };
-mineCraft.imageMover = function(){
+mineCraft.buildToolSidebar = function(){
     var toolArray = $(".toolItem");
     console.log(toolArray);
     for(var t=0;t<toolArray.length; t++ ){
         toolArray.eq(t).append("<img src=" + mineCraft.tools[t].src+">") ;
         toolArray.eq(t).attr('data', mineCraft.tools[t].data);
+        toolArray.eq(t).click(mineCraft.clickTool);
     }
 };
 mineCraft.createBoard = function(){
@@ -77,24 +79,20 @@ mineCraft.createBoard = function(){
       }
   }
 };
-// mineCraft.boxes = $('.box');
-// mineCraft.boxes.on('click', mineCraft.clickBlocks());
-// mineCraft. = $('.toolItem');
-//mineCraft.tools =
+
 mineCraft.clickBlock = function () {
         mineCraft.blockSelected = $(this);
         console.log('block');
         mineCraft.checkMatch();
     };
-mineCraft.clickTools = function (){
-    $('.toolItem').on('click',function() {
+mineCraft.clickTool = function (){
         mineCraft.toolSelected = $(this);
+        mineCraft.toolSelected.toggleClass('toolSelected');
         console.log('tool');
-    })
 };
 // $('div').eq(7).attr('data');
 
-mineCraft.colorShift = function(){
+mineCraft.checkCompatibility = function(){
     $(".toolItem").click(function () {
         if(Benjifunction==true){
             $(this).css("background-color","blue");
