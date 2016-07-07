@@ -54,34 +54,58 @@ mineCraft.checkMatch = function(){
     if (mineCraft.selection[0] === mineCraft.selection[1]){
         mineCraft.match = true;
     }
-}
-;
+};
+mineCraft.imageMover = function(){
+    var toolArray = $(".toolItem");
+    console.log(toolArray);
+    for(var t=0;t<toolArray.length; t++ ){
+        toolArray.eq(t).append("<img src=" + mineCraft.tools[t].src+">") ;
+        toolArray.eq(t).attr('data', mineCraft.tools[t].data);
+    }
+};
 mineCraft.createBoard = function(){
     var mainContain = $('#mainContain');
   for (var i=0;i<mineCraft.matrix.length;i++){
       for(var j=0; j<mineCraft.matrix[i].length; j++){
-          mainContain.append($('<div/>', {
-              class: mineCraft.blocks[mineCraft.matrix[i][j]].class
-          })
+          var tile = $('<div/>');
+          tile.addClass(mineCraft.blocks[mineCraft.matrix[i][j]].class)
               .addClass('box')
-              .attr('data',mineCraft.blocks[mineCraft.matrix[i][j]].data))
-              .on('click', function(){
-                  mineCraft.blockSelected = $(this);
-                  console.log('block');
-                  mineCraft.checkMatch();
-              });
+              .attr('data',mineCraft.blocks[mineCraft.matrix[i][j]].data)
+              .click(mineCraft.clickBlock);
+          mainContain.append(tile);
+
       }
   }
 };
-
+// mineCraft.boxes = $('.box');
+// mineCraft.boxes.on('click', mineCraft.clickBlocks());
+// mineCraft. = $('.toolItem');
+//mineCraft.tools =
+mineCraft.clickBlock = function () {
+        mineCraft.blockSelected = $(this);
+        console.log('block');
+        mineCraft.checkMatch();
+    };
 mineCraft.clickTools = function (){
     $('.toolItem').on('click',function() {
         mineCraft.toolSelected = $(this);
         console.log('tool');
     })
 };
-
-//hey
 // $('div').eq(7).attr('data');
 
+mineCraft.colorShift = function(){
+    $(".toolItem").click(function () {
+        if(Benjifunction==true){
+            $(this).css("background-color","blue");
+        }
+        else{$(this).css("background-color","red");
+
+        }
+    })
+};
+
+//function to move the selected block to the empty space itemselected div in the sidebar
+mineCraft.shiftBlock =function(){
+};
 
