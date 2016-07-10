@@ -53,6 +53,13 @@ mineCraft.startGame = function(){
     mineCraft.buildToolSidebar();
 };
 
+
+
+
+
+
+
+
 mineCraft.checkMatch = function(blockSelected){
    if (mineCraft.replace === false){
        if (blockSelected.attr('class') === 'sky box' || blockSelected.attr('class') === 'cloud box') {
