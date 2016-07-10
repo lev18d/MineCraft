@@ -28,10 +28,25 @@
 #landing-page .button2{
     margin: 0 45% 0 45%;
 }
+#tutorial{
+    position:absolute;
+    z-index: 11;
+    top: 5%;
+    bottom:70%;
+    left: 5%;
+    right: 70%;
+    background-color: grey;
+    display: none;
+    border-radius: 5px;
+    color: white;
+    font-family:"Minecraft Regular";
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+}
 #gameboard{
     display: none;
 }
-
 #mainContain{
     width: 660px;
     height: 660px;
@@ -47,7 +62,6 @@
     position: relative;
 
 }
-
 .toolItem{
     border-style: dashed;
     border-color: lightgrey;
@@ -72,7 +86,6 @@ background-color: red;
     width:80px;height:80px;
     margin: 0 33% 0 33%!important;
 }
-
 .box{
     height:33px;
     width:33px;
@@ -83,7 +96,7 @@ background-color: red;
     box-sizing: border-box;
 }
 .box:hover{
-    border:1px #8dbfff solid;
+    border: 1px #8dbfff solid;
 }
 .sky{
     background-color:#8dbfff ;
