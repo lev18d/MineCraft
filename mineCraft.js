@@ -4,9 +4,8 @@
 
 var mineCraft = {};
 mineCraft.toolSelected = '';
-// mineCraft.blockSelected = '';
-mineCraft.selection = [mineCraft.toolSelected, mineCraft.blockSelected];
-mineCraft.match = false;
+mineCraft.replace = false;
+
 
 mineCraft.blocks = {
     'sky': {class: 'sky', data: 'nothing'},
@@ -47,26 +46,34 @@ mineCraft.matrix = [
     ['dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt', 'dirt']
 ];
 
-$(document).ready(function(){
-   mineCraft.createBoard();
+mineCraft.startGame = function(){
+    $('#landing-page').css('display', 'none');
+    $('#gameboard').css('display', 'block');
+    mineCraft.createBoard();
     mineCraft.buildToolSidebar();
-});
-mineCraft.checkMatch = function(blockSelected){
-    if (blockSelected.attr('data') === $('.toolSelected').attr('data')){
+};
 
-    }
-    else{
-        mineCraft.incompatibility();
-    }
+mineCraft.checkMatch = function(blockSelected){
+   if (mineCraft.replace === false){
+       if (blockSelected.attr('class') === 'sky box' || blockSelected.attr('class') === 'cloud box') {
+           mineCraft.incompatibility();
+       }
+       else if (blockSelected.attr('data') === $('.toolSelected').attr('data')) {
+           mineCraft.blockMover(blockSelected);
+       }
+       else {
+           mineCraft.incompatibility();
+       }
+   }
 };
 mineCraft.buildToolSidebar = function(){
     var toolArray = $(".toolItem");
-    console.log(toolArray);
     for(var t=0;t<toolArray.length; t++ ){
         toolArray.eq(t).append("<img src=" + mineCraft.tools[t].src+">") ;
         toolArray.eq(t).attr('data', mineCraft.tools[t].data);
         toolArray.eq(t).click(mineCraft.clickTool);
     }
+    $('#itemSelected').click(mineCraft.blockReplacer);
 };
 mineCraft.createBoard = function(){
     var mainContain = $('#mainContain');
@@ -85,10 +92,10 @@ mineCraft.createBoard = function(){
 
 mineCraft.clickBlock = function () {
         var blockSelected = $(this);
-        console.log('block');
         mineCraft.checkMatch(blockSelected);
     };
 mineCraft.clickTool = function (){
+    mineCraft.replace = false;
         $('.toolItem').removeClass('toolSelected');
         $(this).toggleClass('toolSelected');
 };
@@ -98,26 +105,37 @@ mineCraft.incompatibility = function(){
     setTimeout(function(){
         $('.toolSelected').removeClass('incorrectSelection');
     },200);
-    
-
-
-
-
-
-
-
-
-
-    // $(".toolItem").click(function () {
-    //     if(Benjifunction==true){
-    //         $(this).css("background-color","blue");
-    //     }
-    //     else{$(this).css("background-color","red");
-    //     }
-    // })
+};
+mineCraft.blockMover = function(blockSelected){
+    if (blockSelected.attr('class') !== 'sky box') {
+        var itemSelectedBox = $("#itemSelected");
+        itemSelectedBox.removeClass();
+        itemSelectedBox.addClass(blockSelected.attr('class'));
+        itemSelectedBox.attr('data', blockSelected.attr('data'));
+        blockSelected.removeClass(blockSelected.attr('class'));
+        blockSelected.addClass(mineCraft.blocks['sky'].class);
+        blockSelected.addClass('box');
+    }
 };
 
-//function to move the selected block to the empty space itemselected div in the sidebar
-mineCraft.shiftBlock =function(){
+mineCraft.blockAdder = function(){
+    var blockSelected = $(this);
+    blockSelected.removeClass();
+    blockSelected.addClass(mineCraft.newClass);
+    blockSelected.attr('data', mineCraft.newData);
+    $('#itemSelected').removeClass();
+    mineCraft.newData = null;
+    mineCraft.newClass = null;
+    $('.box').not('#itemSelected').unbind('click', mineCraft.blockAdder);
 };
+
+mineCraft.blockReplacer = function() {
+    var itemSelected = $('#itemSelected');
+    $('.toolItem').removeClass('toolSelected');
+    mineCraft.replace = true;
+    mineCraft.newClass = itemSelected.attr('class');
+    mineCraft.newData = itemSelected.attr('data');
+    $('.box').not('#itemSelected').click(mineCraft.blockAdder);
+};
+
 

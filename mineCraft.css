@@ -1,5 +1,38 @@
+@font-face {font-family:"Minecraft Regular";
+    src:url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.eot?") format("eot"),
+    url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.woff") format("woff"),
+    url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.ttf") format("truetype"),
+    url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.svg#Minecraft") format("svg");
+    font-weight:normal;font-style:normal;}
+
+#landing-page{
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(images/minecraft.jpg);
+    background-size: cover;
+    background-position: center;
+}
+#landing-page button{
+    text-align: center;
+    width: 120px;
+    height: 30px;
+    font-family:"Minecraft Regular";
+}
+#landing-page .button1{
+    margin: 25% 45% 0 45%;
+}
+#landing-page .button2{
+    margin: 0 45% 0 45%;
+}
+#gameboard{
+    display: none;
+}
+
 #mainContain{
-    /*background-color:#8dbfff ;*/
     width: 660px;
     height: 660px;
     display:inline-block;
@@ -37,8 +70,7 @@ background-color: red;
     border-style: solid;
     border-color: lightgrey;
     width:80px;height:80px;
-    margin: auto;
-
+    margin: 0 33% 0 33%!important;
 }
 
 .box{
@@ -46,7 +78,7 @@ background-color: red;
     width:33px;
     background-size: contain;
     display: inline-block;
-    margin-right: 0px;
+    margin-right: 0;
     margin-bottom: -4px;
     box-sizing: border-box;
 }
