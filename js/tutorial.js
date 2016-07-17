@@ -25,10 +25,10 @@ tutorial.runTimeOut = function (){
 
 };
 tutorial.welcome = function(){
-    $('#tutorial').text('Hellooooo! Welcome to the tutorial for Minecraft Regressed.');
+    $('#tutorial').text('Hello! Welcome to the tutorial for Minecraft Regressed.');
     setTimeout(function(){
         $('#tutorial').text('In this game you will get to alter the environment that you see on your screen with function specific tools.');
-    },5000);
+    },3000);
 };
 tutorial.axeTutorial = function(){
   $('#tutorial').text('This is the axe. It only works with leaves and wood.');

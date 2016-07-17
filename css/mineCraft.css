@@ -1,8 +1,8 @@
 @font-face {font-family:"Minecraft Regular";
-    src:url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.eot?") format("eot"),
-    url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.woff") format("woff"),
-    url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.ttf") format("truetype"),
-    url("Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.svg#Minecraft") format("svg");
+    src:url("../fonts/Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.eot?") format("eot"),
+    url("../fonts/Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.woff") format("woff"),
+    url("../fonts/Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.ttf") format("truetype"),
+    url("../fonts/Minecraft_Regular/minecraft_font_by_pwnage_block-d37t6nb.svg#Minecraft") format("svg");
     font-weight:normal;font-style:normal;}
 
 #landing-page{
@@ -12,7 +12,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url(images/minecraft.jpg);
+    background-image: url(../images/minecraft.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -105,18 +105,18 @@ background-color: red;
     background-color: #ffffff;
 }
 .dirt{
-    background-image: url('images/dirt.png');
+    background-image: url('../images/dirt.png');
 }
 .rock{
-    background-image: url('images/rock.png');
+    background-image: url('../images/rock.png');
 }
 .grass{
-    background-image: url('images/grass.png');
+    background-image: url('../images/grass.png');
 }
 .leaf{
-    background-image: url('images/leaf.png');
+    background-image: url('../images/leaf.png');
 }
 .tree{
-    background-image: url('images/tree.png');
+    background-image: url('../images/tree.png');
 }
 
