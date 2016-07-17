@@ -119,9 +119,7 @@ mineCraft.blockMover = function(blockSelected){
         itemSelectedBox.removeClass();
         itemSelectedBox.addClass(blockSelected.attr('class'));
         itemSelectedBox.attr('data', blockSelected.attr('data'));
-        blockSelected.removeClass(blockSelected.attr('class'));
-        blockSelected.addClass(mineCraft.blocks['sky'].class);
-        blockSelected.addClass('box');
+       blockSelected.attr('class', 'sky box');
     }
 };
 
