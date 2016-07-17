@@ -6,7 +6,6 @@ var mineCraft = {};
 mineCraft.toolSelected = '';
 mineCraft.replace = false;
 
-
 mineCraft.blocks = {
     'sky': {class: 'sky', data: 'nothing'},
     'cloud':{class: 'cloud',data: 'nothing'},
@@ -21,8 +20,6 @@ mineCraft.tools = [
     {data: 'pickaxe', src: 'images/pickaxe.png'},
     {data: 'shovel', src: 'images/shovel.png'}
 ];
-
-
 mineCraft.matrix = [
     ['sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky', 'sky'],
     ['sky', 'sky', 'sky', 'cloud', 'sky', 'cloud', 'sky', 'sky', 'sky', 'sky', 'cloud', 'cloud', 'sky', 'sky', 'cloud', 'cloud', 'sky', 'sky', 'sky', 'sky'],
@@ -52,17 +49,9 @@ mineCraft.startGame = function(){
     mineCraft.createBoard();
     mineCraft.buildToolSidebar();
 };
-
-
-
-
-
-
-
-
 mineCraft.checkMatch = function(blockSelected){
    if (mineCraft.replace === false){
-       if (blockSelected.attr('class') === 'sky box' || blockSelected.attr('class') === 'cloud box') {
+       if (blockSelected.hasClass('sky box')|| blockSelected.hasClass('cloud box')) {
            mineCraft.incompatibility();
        }
        else if (blockSelected.attr('data') === $('.toolSelected').attr('data')) {
@@ -96,7 +85,6 @@ mineCraft.createBoard = function(){
       }
   }
 };
-
 mineCraft.clickBlock = function () {
         var blockSelected = $(this);
         mineCraft.checkMatch(blockSelected);
@@ -106,7 +94,6 @@ mineCraft.clickTool = function (){
         $('.toolItem').removeClass('toolSelected');
         $(this).toggleClass('toolSelected');
 };
-
 mineCraft.incompatibility = function(){
     $('.toolSelected').addClass('incorrectSelection');
     setTimeout(function(){
@@ -114,27 +101,23 @@ mineCraft.incompatibility = function(){
     },200);
 };
 mineCraft.blockMover = function(blockSelected){
-    if (blockSelected.attr('class') !== 'sky box') {
+    if (blockSelected.not('sky box')) {
         var itemSelectedBox = $("#itemSelected");
-        itemSelectedBox.removeClass();
-        itemSelectedBox.addClass(blockSelected.attr('class'));
+        itemSelectedBox.attr('class', blockSelected.attr('class'));
         itemSelectedBox.attr('data', blockSelected.attr('data'));
-       blockSelected.attr('class', 'sky box');
+        blockSelected.attr('class', 'sky box');
     }
 };
-
 mineCraft.blockAdder = function(){
     var blockSelected = $(this);
-    blockSelected.removeClass();
-    blockSelected.addClass(mineCraft.newClass);
+    blockSelected.attr('class', mineCraft.newClass);
     blockSelected.attr('data', mineCraft.newData);
     $('#itemSelected').removeClass();
-    mineCraft.newData = null;
-    mineCraft.newClass = null;
     $('.box').not('#itemSelected').unbind('click', mineCraft.blockAdder);
 };
-
 mineCraft.blockReplacer = function() {
+    mineCraft.newData = null;
+    mineCraft.newClass = null;
     var itemSelected = $('#itemSelected');
     $('.toolItem').removeClass('toolSelected');
     mineCraft.replace = true;
